@@ -15,6 +15,8 @@ class StatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('location');
             $table->string('age');
             $table->string('birthorder');
@@ -34,6 +36,6 @@ class StatsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('stats');
     }
 }

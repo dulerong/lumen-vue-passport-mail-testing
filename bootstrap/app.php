@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 $app->withEloquent();
 
@@ -60,6 +60,16 @@ $app->singleton(
 */
 
 $app->configure('app');
+$app->configure('auth');
+$app->configure('mail');
+$app->configure('services');
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class); // Laravel standard password reset, did not use
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class); // Laravel standard password reset, did not use
 
 /*
 |--------------------------------------------------------------------------
@@ -76,9 +86,10 @@ $app->configure('app');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+
+$app->routeMiddleware([ // Enable auth middleware (shipped with Lumen)
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -91,9 +102,17 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class); // enable Auth so lumen can apply auth to incoming request
+$app->register(App\Providers\EventServiceProvider::class);
+
+$app->register(Laravel\Passport\PassportServiceProvider::class); // enable passport for lumen
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class); // enable passport for lumen
+
+$app->register(Illuminate\Mail\MailServiceProvider::class); // enable MailService, so lumen can send email
+
+$app->register(Illuminate\Auth\Passwords\PasswordResetServiceProvider::class); // did not use this in my project
+$app->register(Illuminate\Notifications\NotificationServiceProvider::class); // did not use this in my project
 
 /*
 |--------------------------------------------------------------------------
@@ -106,9 +125,7 @@ $app->configure('app');
 |
 */
 
-$app->router->group([
-    'namespace' => 'App\Http\Controllers',
-], function ($router) {
+$app->router->group(['namespace' => 'App\Http\Controllers',], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
 

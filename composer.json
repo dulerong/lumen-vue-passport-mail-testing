@@ -6,6 +6,9 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
+        "dusterio/lumen-passport": "^0.2.19",
+        "illuminate/mail": "^7.23",
+        "illuminate/notifications": "^7.23",
         "laravel/lumen-framework": "^7.0"
     },
     "require-dev": {

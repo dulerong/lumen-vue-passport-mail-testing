@@ -20,7 +20,12 @@ class StatController extends Controller
     //
 
     public function showAllStats(Request $request){
-        return response()->json(Stat::orderBy('created_at','desc')->get());
+        // return response()->json(Stat::orderBy('created_at','desc')->get());
+        $record = Stat::where('user_id', auth()->user()->id)->orderBy('created_at','desc')->get();
+        if($record){ return $record ;}
+        else{ return response()->json('No record exist');}
+
+        // return Stat::where('user_id', auth()->user()->id)->get();
     }
 
     public function showOneStat($id){
@@ -37,7 +42,8 @@ class StatController extends Controller
 
         //insert record
         $stat = new Stat;
-
+        
+        $stat->user_id = auth()->user()->id;
         $stat->location = $request->input('selected');
         $stat->age = $request->input('motherAge');
         $stat->birthorder = $request->input('birthOrder');
@@ -53,8 +59,13 @@ class StatController extends Controller
     }
 
     public function delete($id){
-        Stat::findOrFail($id)->delete();
-        return response('Deleted Successfully!');
+        $record = Stat::findOrFail($id);
+
+        if($record->user_id !== auth()->user()->id){ return response()->json('Unauthorized delete attempt', 401);}
+        else{
+            $record->delete();
+            return response('Deleted Successfully!');
+        }
     }
 
 }

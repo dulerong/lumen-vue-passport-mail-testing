@@ -1,6 +1,6 @@
 <template>
     <b-form-radio-group v-model="selected" name="birthOrderButton">
-        <div class="my-3">Birth Order Selected: <strong>{{ selected }}</strong></div>
+        <div class="mt-3">Birth Order Selected: <strong>{{ selected }}</strong></div>
         <b-container>
             <b-row>
                 <b-col md><b-form-radio value="1胎">1胎</b-form-radio></b-col>

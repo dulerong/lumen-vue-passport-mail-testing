@@ -1,5 +1,5 @@
 <template>
-    <b-container class="my-2">
+    <b-container class="my-3">
         <b-row>
             <b-col md><h6>Results <b-badge>{{count.results}} 筆數據</b-badge></h6></b-col>
             <b-col md><h6>Child <b-badge>{{count.birthCount}} 人出生</b-badge></h6></b-col>

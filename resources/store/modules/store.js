@@ -11,6 +11,8 @@ const state = {
     comment: '',
     savedData: [],
     records: [],
+    token: localStorage.getItem('access_token') || null,
+    username: localStorage.getItem('username') || null
 };
 const getters = { 
     loading:            state => state.loading,
@@ -21,20 +23,27 @@ const getters = {
     birthGenderSelected:state => state.birthGender,
     comment:            state => state.comment,
     savedData:          state => state.savedData,
-    records:            state => state.records
+    records:            state => state.records,
+    loggedIn(state){ return state.token !== null },
+    username(){ return state.username }
 };
 const actions = {
+    changeLoading({ commit }){ commit('changeLoading')},
     changeLocation({ commit }, data){ commit('changeLocation', data) },
     changeAge({ commit }, data){ commit('changeAge', data) },
     changeBirthOrder({ commit }, data){ commit('changeBirthOrder', data)},
     changeBirthGender({ commit }, data){ commit('changeBirthGender', data)},
     changeComment({ commit }, data){ commit('changeComment', data)},
     retrieveSavedData({ commit }){
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
+
         axios.get('api/stats')
             .then(res => { commit('retrieveSavedData', res.data) })
             .catch(err => console.log(err))
     },
     deleteSavedData({ }, id){ 
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
+
         axios.delete(`api/stats/${id}`)
             .then(res => router.go())
             .catch(err => console.log(err))
@@ -64,6 +73,7 @@ const actions = {
             })
     },
     saveData({ state }){
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
         const data = {
             "selected": state.locationSelected.join(", "),
             "motherAge": state.ageSelected.join(", "),
@@ -76,6 +86,64 @@ const actions = {
         }
         axios.post("api/stats", JSON.stringify(data), { headers: {'Content-Type': 'application/json'} })
             .catch(err => console.log(err))
+    },
+    retrieveToken({ commit }, data){ 
+        commit('changeLoading')
+        return new Promise((resolve, reject) => {
+            axios.post('/login', data)
+            .then(res => { 
+                const token = res.data.access_token
+                localStorage.setItem('access_token', token)
+                commit('retrieveToken', token)
+                commit('changeLoading')
+                resolve(res)
+            })
+            .catch(err => {
+                console.log(err)
+                reject(err)
+            })
+        })
+    },
+    register({ }, data){
+        return new Promise((resolve, reject) => {
+            axios.post('/register', data)
+            .then(res => {
+                resolve(res)
+            })
+            .catch(err => {  
+                console.log(err)
+                reject(err)
+            })
+        })
+    },
+    destroyToken({ commit, state }){
+        return new Promise((resolve, reject) => {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
+            axios.get('/logout')
+                .then(res => {
+                    localStorage.removeItem('access_token')
+                    commit('destroyToken')
+                    resolve(res)
+                })
+                .catch(err => { 
+                    console.log(err)
+                    reject(err)
+                })
+        }) 
+    },
+    clearDataAndRecord({ commit }){ 
+        localStorage.removeItem('username')
+        commit('clearDataAndRecord')
+    },
+    retrieveUserName({ commit }){ 
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.token
+        axios.get('/api/username')
+            .then(res => {
+                const username = res.data
+                localStorage.setItem('username', username)
+                commit('retrieveUserName', username)
+            })
+            .catch(err => console.log(err)) 
     }
 };
 const mutations = { 
@@ -91,7 +159,7 @@ const mutations = {
     updateCountFemale:(state, data) => state.count.birthFemale = data,
     retrieveSavedData:(state, data) => {
         // save data to state and exclude unnecessary properties using ES6 destructuring
-        state.savedData = data.map(({created_at, updated_at, ...rest}) => rest)
+        state.savedData = data.map(({created_at, updated_at, user_id, ...rest}) => rest)
             
         // remove Chinese characters 新北市, and 區 from location
         state.savedData.forEach(record => record.location = record.location.replace(/\u65b0\u5317\u5e02/g, ""))
@@ -111,7 +179,16 @@ const mutations = {
         
         // turn all birth_count to numbers
         state.records.forEach(record => record.birth_count = Number(record.birth_count))
-    }
+    },
+    retrieveToken: (state, token) => { state.token = token },
+    destroyToken: (state)  => { state.token = null },
+    clearDataAndRecord: (state) => { 
+        state.savedData = []
+        state.records = []
+        state.count = {results: 0, birthCount: 0, birthMale: 0, birthFemale: 0}
+        state.username = null
+    },
+    retrieveUserName: (state, username) => { state.username = username }
 };
 
 export default {

@@ -7,10 +7,16 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
+use Laravel\Passport\HasApiTokens;
+// Below three were for Laravel standard password reset, which I did not use
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+// Above three were for Laravel standard password reset, which I did not use
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable;
+    use HasApiTokens, Authenticatable, Authorizable, Notifiable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +24,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -27,6 +33,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'created_at', 'updated_at', 'last_logged_in', //'remember_token' Tried using Laravel standard password reset, but did not use it in the end
     ];
+
+    public function todos() {
+        return $this->hasMany('App\Stat');
+    }
 }

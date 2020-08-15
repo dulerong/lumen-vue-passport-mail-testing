@@ -15,9 +15,24 @@ $router->get('/', function ()  {
     return view('app');
 });
 
-$router->group(['prefix' => 'api'], function($router){
-    $router->get('stats', 'StatController@showAllStats');
-    $router->get('stats/{id}', 'StatController@showOneStat');
-    $router->post('stats', 'StatController@create');
-    $router->delete('stats/{id}', 'StatController@delete');
+$router->post('/login', 'AuthController@login');
+$router->post('/register','AuthController@register');
+
+
+$router->group(['middleware' => 'auth:api'], function () use ($router) {
+    $router->group(['prefix' => 'api'], function($router){
+        $router->get('stats', 'StatController@showAllStats');
+        $router->post('stats', 'StatController@create');
+        $router->delete('stats/{id}', 'StatController@delete');
+        $router->get('username', 'AuthController@showUserName');
+    });
+    $router->get('/logout', 'AuthController@logout');
+    
 });
+
+$router->post('/email', 'ContactController@email');
+$router->post('/verifytoken', 'ContactController@verifytoken');
+
+// Below codes: I tried to setup the standard Laravel password reset, but in the end did not use it in my project
+// $router->post('/password/reset-request', 'RequestPasswordController@sendResetLinkEmail');
+// $router->post('/password/reset', [ 'as' => 'password.reset', 'uses' => 'ResetPasswordController@reset' ]);

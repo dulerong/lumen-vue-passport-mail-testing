@@ -1,6 +1,6 @@
 <template>
     <b-form-checkbox-group v-model="selected" name="selected">
-        <div class="my-3">Location Selected: <strong>{{ selected }}</strong></div>
+        <div class="mt-3">Location Selected: <strong>{{ selected }}</strong></div>
         <b-container>
             <b-row>
                 <b-col md><b-form-checkbox value="新北市板橋區">板橋區</b-form-checkbox></b-col>
