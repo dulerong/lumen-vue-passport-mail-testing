@@ -57578,6 +57578,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
 
 exports.default = {
     name: "SaveModal"
@@ -57602,7 +57605,9 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("需事先讀取資料，目前數據為0筆!")])
+        _c("h3", [_vm._v("需事先讀取資料")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("目前數據為0筆!")])
       ]),
       _vm._v(" "),
       _c(
@@ -57725,14 +57730,14 @@ var render = function() {
       _c("div", { staticClass: "d-block text-center" }, [
         _c("h3", [_vm._v("資料儲存完畢")]),
         _vm._v(" "),
-        _c("h3", [_vm._v("自動更新畫面至DATA頁面!")])
+        _c("h3", [_vm._v("更新頁面至DATA!")])
       ]),
       _vm._v(" "),
       _c(
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
+          attrs: { variant: "outline-dark", block: "" },
           on: {
             click: function($event) {
               return _vm.$emit("loadDataPage")
@@ -57905,7 +57910,7 @@ var render = function() {
               _c(
                 "b-button",
                 {
-                  attrs: { id: "loadButton", variant: "outline-primary" },
+                  attrs: { id: "loadButton", variant: "outline-dark" },
                   on: { click: _vm.fetch }
                 },
                 [_vm._v("Load Data")]
@@ -57925,7 +57930,7 @@ var render = function() {
               _c(
                 "b-button",
                 {
-                  attrs: { id: "saveButton", variant: "outline-success" },
+                  attrs: { id: "saveButton", variant: "outline-dark" },
                   on: { click: _vm.save }
                 },
                 [_vm._v("Save Data")]
@@ -58414,7 +58419,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-btn",
-            { attrs: { variant: "primary", href: "https://data.gov.tw/" } },
+            { attrs: { variant: "dark", href: "https://data.gov.tw/" } },
             [_vm._v("More Info")]
           )
         ],
@@ -58705,7 +58710,7 @@ var render = function() {
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
+          attrs: { variant: "outline-dark", block: "" },
           on: {
             click: function($event) {
               return _vm.$bvModal.hide("deleteModal")
@@ -58825,7 +58830,7 @@ var render = function() {
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-danger", block: "" },
+          attrs: { variant: "outline-warning", block: "" },
           on: {
             click: function($event) {
               return _vm.$bvModal.hide("nothingFound")
@@ -59016,7 +59021,7 @@ exports = module.exports = __webpack_require__(27)(false);
 
 
 // module
-exports.push([module.i, "\np[data-v-9dea1a9a] {\n        cursor: pointer;\n        text-decoration: underline;\n}\n.container[data-v-9dea1a9a] {\n        width: 50%;\n        margin-top: 40px;\n}\n@media (max-width: 700px) {\n.container[data-v-9dea1a9a] {\n        width: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\np[data-v-9dea1a9a] {\n        cursor: pointer;\n        text-decoration: underline;\n}\n.container[data-v-9dea1a9a] {\n        width: 50%;\n        margin-top: 10px;\n}\n@media (max-width: 700px) {\n.container[data-v-9dea1a9a] {\n        width: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -59048,6 +59053,7 @@ var _Spinner2 = _interopRequireDefault(_Spinner);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
 //
 //
 //
@@ -59556,11 +59562,9 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "b-button",
-                { attrs: { type: "submit", variant: "primary" } },
-                [_vm._v("Login")]
-              ),
+              _c("b-button", { attrs: { type: "submit", variant: "dark" } }, [
+                _vm._v("Login")
+              ]),
               _vm._v(" "),
               _c(
                 "p",
@@ -59568,6 +59572,17 @@ var render = function() {
                 [
                   _c("router-link", { attrs: { to: "/resetpassword" } }, [
                     _vm._v("Forgot your password? Reset it here.")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "my-3" },
+                [
+                  _c("router-link", { attrs: { to: "/register" } }, [
+                    _vm._v("First time? Register here.")
                   ])
                 ],
                 1
@@ -59682,7 +59697,7 @@ exports = module.exports = __webpack_require__(27)(false);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-675a4549] {\n        width: 50%;\n        margin-top: 40px;\n}\n@media (max-width: 700px) {\n.container[data-v-675a4549] {\n        width: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-675a4549] {\n        width: 50%;\n        margin-top: 10px;\n}\n@media (max-width: 700px) {\n.container[data-v-675a4549] {\n        width: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -59734,23 +59749,64 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     name: 'Register',
     components: { RegistrationComplete: _RegistrationComplete2.default, RegistrationFail: _RegistrationFail2.default },
+    computed: {
+        nameState: function nameState() {
+            return this.name.length > 2 ? true : false;
+        },
+        emailState: function emailState() {
+            return this.email.indexOf('@') > -1 ? true : false;
+        },
+        passwordState: function passwordState() {
+            return this.password.length > 5 ? true : false;
+        },
+        password_confirmState: function password_confirmState() {
+            if (this.password_confirmation.length === 0) {
+                return false;
+            } else if (this.password_confirmation !== this.password) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    },
     data: function data() {
         return {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            password_confirmation: ''
         };
     },
 
     methods: {
+        checkInfo: function checkInfo() {
+            if (this.nameState && this.emailState && this.passwordState && this.password_confirmState) {
+                this.register();
+            }
+        },
         register: function register() {
             var _this = this;
 
-            this.$store.dispatch('register', { name: this.name, email: this.email, password: this.password }).then(function (res) {
+            var data = {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation
+            };
+            this.$store.dispatch('register', data).then(function (res) {
                 return _this.$bvModal.show('registrationComplete');
             }).catch(function (err) {
                 return _this.$bvModal.show('registrationFail');
@@ -59828,6 +59884,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
     name: "RegistrationComplete"
@@ -59852,14 +59909,16 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("帳號註冊完畢，請從Login頁面登入!")])
+        _c("h3", [_vm._v("帳號註冊完畢")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("請從Login頁面登入!")])
       ]),
       _vm._v(" "),
       _c(
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
+          attrs: { variant: "outline-dark", block: "" },
           on: {
             click: function($event) {
               return _vm.$emit("registrationComplete")
@@ -59972,14 +60031,14 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("此Email帳號已被使用!")])
+        _c("h3", [_vm._v("Email帳號已被使用!")])
       ]),
       _vm._v(" "),
       _c(
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-warning", block: "" },
+          attrs: { variant: "outline-danger", block: "" },
           on: {
             click: function($event) {
               return _vm.$bvModal.hide("registrationFail")
@@ -60020,7 +60079,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.register($event)
+              return _vm.checkInfo($event)
             }
           }
         },
@@ -60032,7 +60091,12 @@ var render = function() {
             { attrs: { label: "Name", "label-for": "name" } },
             [
               _c("b-form-input", {
-                attrs: { id: "name", name: "name", type: "text" },
+                attrs: {
+                  name: "name",
+                  type: "text",
+                  state: _vm.nameState,
+                  placeholder: "Enter your name"
+                },
                 model: {
                   value: _vm.name,
                   callback: function($$v) {
@@ -60040,7 +60104,13 @@ var render = function() {
                   },
                   expression: "name"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "b-form-invalid-feedback",
+                { attrs: { id: "input-live-feedback" } },
+                [_vm._v("Enter at least 3 letters")]
+              )
             ],
             1
           ),
@@ -60050,7 +60120,12 @@ var render = function() {
             { attrs: { label: "Email", "label-for": "email" } },
             [
               _c("b-form-input", {
-                attrs: { id: "email", name: "email", type: "email" },
+                attrs: {
+                  name: "email",
+                  type: "email",
+                  state: _vm.emailState,
+                  placeholder: "Enter your email"
+                },
                 model: {
                   value: _vm.email,
                   callback: function($$v) {
@@ -60058,7 +60133,13 @@ var render = function() {
                   },
                   expression: "email"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "b-form-invalid-feedback",
+                { attrs: { id: "input-live-feedback" } },
+                [_vm._v("Enter valid email")]
+              )
             ],
             1
           ),
@@ -60068,7 +60149,12 @@ var render = function() {
             { attrs: { label: "Password", "label-for": "password" } },
             [
               _c("b-form-input", {
-                attrs: { id: "password", name: "password", type: "password" },
+                attrs: {
+                  name: "password",
+                  type: "password",
+                  state: _vm.passwordState,
+                  placeholder: "Enter password"
+                },
                 model: {
                   value: _vm.password,
                   callback: function($$v) {
@@ -60076,12 +60162,52 @@ var render = function() {
                   },
                   expression: "password"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "b-form-invalid-feedback",
+                { attrs: { id: "input-live-feedback" } },
+                [_vm._v("Must contain at least 6 characters")]
+              )
             ],
             1
           ),
           _vm._v(" "),
-          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                label: "Confirm Password",
+                "label-for": "password_confirmation"
+              }
+            },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  name: "password_confirmation",
+                  type: "password",
+                  state: _vm.password_confirmState,
+                  placeholder: "Confirm password"
+                },
+                model: {
+                  value: _vm.password_confirmation,
+                  callback: function($$v) {
+                    _vm.password_confirmation = $$v
+                  },
+                  expression: "password_confirmation"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "b-form-invalid-feedback",
+                { attrs: { id: "input-live-feedback" } },
+                [_vm._v("Unmatching passwords!")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("b-button", { attrs: { type: "submit", variant: "dark" } }, [
             _vm._v("Register")
           ])
         ],
@@ -60308,7 +60434,7 @@ var render = function() {
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
+          attrs: { variant: "outline-dark", block: "" },
           on: {
             click: function($event) {
               return _vm.$emit("logout")
@@ -60566,7 +60692,7 @@ exports = module.exports = __webpack_require__(27)(false);
 
 
 // module
-exports.push([module.i, "\np[data-v-7cc11458] {\n        cursor: pointer;\n        text-decoration: underline;\n}\n.container[data-v-7cc11458] {\n        width: 50%;\n}\n@media (max-width: 1100px){\nh2[data-v-7cc11458] {\n        font-size: 24px;\n}\n}\n@media (max-width: 800px) {\nh2[data-v-7cc11458] {\n        font-size: 20px;\n}\n.container[data-v-7cc11458] {\n        width: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\np[data-v-7cc11458] {\n        cursor: pointer;\n        text-decoration: underline;\n}\n.container[data-v-7cc11458] {\n        width: 50%;\n        margin-top: 10px;\n}\n@media (max-width: 800px) {\n.container[data-v-7cc11458] {\n        width: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -60588,14 +60714,6 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _vuex = __webpack_require__(24);
 
-var _ResetPasswordFail = __webpack_require__(395);
-
-var _ResetPasswordFail2 = _interopRequireDefault(_ResetPasswordFail);
-
-var _ResetTokenMissing = __webpack_require__(398);
-
-var _ResetTokenMissing2 = _interopRequireDefault(_ResetTokenMissing);
-
 var _ResetTokenSent = __webpack_require__(401);
 
 var _ResetTokenSent2 = _interopRequireDefault(_ResetTokenSent);
@@ -60603,14 +60721,6 @@ var _ResetTokenSent2 = _interopRequireDefault(_ResetTokenSent);
 var _ResetTokenNotSent = __webpack_require__(404);
 
 var _ResetTokenNotSent2 = _interopRequireDefault(_ResetTokenNotSent);
-
-var _ResetTokenInvalid = __webpack_require__(407);
-
-var _ResetTokenInvalid2 = _interopRequireDefault(_ResetTokenInvalid);
-
-var _ResetSuccessful = __webpack_require__(410);
-
-var _ResetSuccessful2 = _interopRequireDefault(_ResetSuccessful);
 
 var _SpinnerGreyCover = __webpack_require__(120);
 
@@ -60620,15 +60730,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     name: 'ResetPassword',
-    components: { ResetPasswordFail: _ResetPasswordFail2.default, ResetTokenMissing: _ResetTokenMissing2.default, ResetTokenSent: _ResetTokenSent2.default, ResetTokenNotSent: _ResetTokenNotSent2.default, ResetTokenInvalid: _ResetTokenInvalid2.default, ResetSuccessful: _ResetSuccessful2.default, SpinnerGreyCover: _SpinnerGreyCover2.default },
+    components: { ResetTokenSent: _ResetTokenSent2.default, ResetTokenNotSent: _ResetTokenNotSent2.default, SpinnerGreyCover: _SpinnerGreyCover2.default },
     computed: (0, _vuex.mapGetters)(['loading']),
     data: function data() {
         return {
             email: '',
-            token: '',
-            password_new: '',
-            password_confirm: ''
-
+            token: ''
         };
     },
 
@@ -60649,56 +60756,9 @@ exports.default = {
             }).catch(function (err) {
                 console.log(err);
             });
-        },
-        resetpassword: function resetpassword() {
-            var _this2 = this;
-
-            if (this.password_new !== this.password_confirm) {
-                this.$bvModal.show('resetPasswordFail');
-                this.password_new = '';
-                this.password_confirm = '';
-            } else if (!this.token) {
-                this.$bvModal.show('resetTokenMissing');
-            } else {
-                var data = { token: this.token, password_new: this.password_new, password_confirm: this.password_confirm };
-                this.$store.dispatch('changeLoading');
-                _axios2.default.post('/verifytoken', JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } }).then(function (res) {
-                    if (res.data.status === 'fail') {
-                        _this2.$bvModal.show('resetTokenInvalid');
-                    } else {
-                        _this2.$bvModal.show('resetSuccessful');
-                    }
-                    _this2.$store.dispatch('changeLoading');
-
-                    console.log(res.data);
-                }).catch(function (err) {
-                    return console.log(err);
-                });
-            }
-        },
-        resetSuccessful: function resetSuccessful() {
-            this.$bvModal.hide('resetSuccessful');
-            this.$router.push({ name: 'login' });
         }
     }
 }; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -61512,246 +61572,12 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 395 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(9)
-/* script */
-var __vue_script__ = __webpack_require__(396)
-/* template */
-var __vue_template__ = __webpack_require__(397)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/modals/ResetPasswordFail.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-71a53212", Component.options)
-  } else {
-    hotAPI.reload("data-v-71a53212", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 396 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "ResetPasswordFail"
-};
-
-/***/ }),
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "b-modal",
-    {
-      attrs: {
-        id: "resetPasswordFail",
-        "hide-footer": "",
-        title: "Warning (重新設定失敗通知)"
-      }
-    },
-    [
-      _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("輸入密碼不一致!")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          staticClass: "mt-3",
-          attrs: { variant: "outline-warning", block: "" },
-          on: {
-            click: function($event) {
-              return _vm.$bvModal.hide("resetPasswordFail")
-            }
-          }
-        },
-        [_vm._v("確定")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-71a53212", module.exports)
-  }
-}
-
-/***/ }),
-/* 398 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(9)
-/* script */
-var __vue_script__ = __webpack_require__(399)
-/* template */
-var __vue_template__ = __webpack_require__(400)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/modals/ResetTokenMissing.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1d3381cb", Component.options)
-  } else {
-    hotAPI.reload("data-v-1d3381cb", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "ResetTokenMissing"
-};
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "b-modal",
-    {
-      attrs: {
-        id: "resetTokenMissing",
-        "hide-footer": "",
-        title: "Warning (重新設定失敗通知)"
-      }
-    },
-    [
-      _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("請輸入Token!")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          staticClass: "mt-3",
-          attrs: { variant: "outline-warning", block: "" },
-          on: {
-            click: function($event) {
-              return _vm.$bvModal.hide("resetTokenMissing")
-            }
-          }
-        },
-        [_vm._v("確定")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1d3381cb", module.exports)
-  }
-}
-
-/***/ }),
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
 /* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -61817,6 +61643,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
     name: "ResetTokenSent"
@@ -61841,14 +61668,16 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("Token以寄到您電子郵件帳號，請查閱!")])
+        _c("h3", [_vm._v("連結已寄到您電子郵件")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("請查閱!")])
       ]),
       _vm._v(" "),
       _c(
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
+          attrs: { variant: "outline-dark", block: "" },
           on: {
             click: function($event) {
               return _vm.$bvModal.hide("resetTokenSent")
@@ -61961,14 +61790,14 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("此Email沒註冊在系統內!")])
+        _c("h3", [_vm._v("Email沒註冊在系統內!")])
       ]),
       _vm._v(" "),
       _c(
         "b-button",
         {
           staticClass: "mt-3",
-          attrs: { variant: "outline-warning", block: "" },
+          attrs: { variant: "outline-danger", block: "" },
           on: {
             click: function($event) {
               return _vm.$bvModal.hide("resetTokenNotSent")
@@ -61992,246 +61821,12 @@ if (false) {
 }
 
 /***/ }),
-/* 407 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(9)
-/* script */
-var __vue_script__ = __webpack_require__(408)
-/* template */
-var __vue_template__ = __webpack_require__(409)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/modals/ResetTokenInvalid.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d7ef7c48", Component.options)
-  } else {
-    hotAPI.reload("data-v-d7ef7c48", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 408 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "ResetTokenInvalid"
-};
-
-/***/ }),
-/* 409 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "b-modal",
-    {
-      attrs: {
-        id: "resetTokenInvalid",
-        "hide-footer": "",
-        title: "Warning (重新設定失敗通知)"
-      }
-    },
-    [
-      _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("Token不正確!")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          staticClass: "mt-3",
-          attrs: { variant: "outline-warning", block: "" },
-          on: {
-            click: function($event) {
-              return _vm.$bvModal.hide("resetTokenInvalid")
-            }
-          }
-        },
-        [_vm._v("確定")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d7ef7c48", module.exports)
-  }
-}
-
-/***/ }),
-/* 410 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(9)
-/* script */
-var __vue_script__ = __webpack_require__(411)
-/* template */
-var __vue_template__ = __webpack_require__(412)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/modals/ResetSuccessful.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-473f9b90", Component.options)
-  } else {
-    hotAPI.reload("data-v-473f9b90", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 411 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "ResetTokenInvalid"
-};
-
-/***/ }),
-/* 412 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "b-modal",
-    {
-      attrs: {
-        id: "resetSuccessful",
-        "hide-footer": "",
-        title: "Warning (重新設定成功通知)"
-      }
-    },
-    [
-      _c("div", { staticClass: "d-block text-center" }, [
-        _c("h3", [_vm._v("密碼重新設定成功!")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          staticClass: "mt-3",
-          attrs: { variant: "outline-primary", block: "" },
-          on: {
-            click: function($event) {
-              return _vm.$emit("resetSuccessful")
-            }
-          }
-        },
-        [_vm._v("確定")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-473f9b90", module.exports)
-  }
-}
-
-/***/ }),
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
 /* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -62244,7 +61839,7 @@ var render = function() {
     [
       _c(
         "b-form",
-        { staticClass: "mt-3", attrs: { action: "#" } },
+        { attrs: { action: "#" } },
         [
           _c("h2", [_vm._v("Enter Email Address")]),
           _vm._v(" "),
@@ -62268,106 +61863,16 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-button",
-            { attrs: { variant: "primary" }, on: { click: _vm.sendToken } },
-            [_vm._v("Send Token")]
+            { attrs: { variant: "dark" }, on: { click: _vm.sendToken } },
+            [_vm._v("Send Reset Link")]
           )
         ],
         1
       ),
-      _vm._v(" "),
-      _c(
-        "b-form",
-        { staticClass: "mt-3", attrs: { action: "#" } },
-        [
-          _c("h2", [_vm._v("Enter Token and Reset Password")]),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            { attrs: { label: "Token", "label-for": "token" } },
-            [
-              _c("b-form-input", {
-                attrs: { id: "token", name: "token", type: "text" },
-                model: {
-                  value: _vm.token,
-                  callback: function($$v) {
-                    _vm.token = $$v
-                  },
-                  expression: "token"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            { attrs: { label: "New Password", "label-for": "newpassword" } },
-            [
-              _c("b-form-input", {
-                attrs: {
-                  id: "newpassword",
-                  name: "newpassword",
-                  type: "password"
-                },
-                model: {
-                  value: _vm.password_new,
-                  callback: function($$v) {
-                    _vm.password_new = $$v
-                  },
-                  expression: "password_new"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            {
-              attrs: {
-                label: "Confirm Password",
-                "label-for": "confirmpassword"
-              }
-            },
-            [
-              _c("b-form-input", {
-                attrs: {
-                  id: "confirmpassword",
-                  name: "confirmpassword",
-                  type: "password"
-                },
-                model: {
-                  value: _vm.password_confirm,
-                  callback: function($$v) {
-                    _vm.password_confirm = $$v
-                  },
-                  expression: "password_confirm"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-button",
-            { attrs: { variant: "primary" }, on: { click: _vm.resetpassword } },
-            [_vm._v("Reset Password")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("ResetPasswordFail"),
-      _vm._v(" "),
-      _c("ResetTokenMissing"),
       _vm._v(" "),
       _c("ResetTokenSent"),
       _vm._v(" "),
       _c("ResetTokenNotSent"),
-      _vm._v(" "),
-      _c("ResetTokenInvalid"),
-      _vm._v(" "),
-      _c("ResetSuccessful", { on: { resetSuccessful: _vm.resetSuccessful } }),
       _vm._v(" "),
       _c("SpinnerGreyCover")
     ],
@@ -62655,7 +62160,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "b-navbar",
-    { attrs: { toggleable: "lg", type: "dark", variant: "info" } },
+    { attrs: { toggleable: "lg", type: "dark", variant: "dark" } },
     [
       _c(
         "div",
@@ -69383,6 +68888,7 @@ var actions = {
                 commit('destroyToken');
                 resolve(res);
             }).catch(function (err) {
+                localStorage.removeItem('access_token');
                 console.log(err);
                 reject(err);
             });

@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="dark">
         <div class="container">
             <b-navbar-brand>2019年新北市生育資料 <span class="usernameBar">{{ username }}</span></b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

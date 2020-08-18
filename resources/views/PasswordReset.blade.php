@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>Dear {{ $username }}</h1>
-    <p>Your token is <strong>{{ $token }}</strong></p>
+    <p>Please click the following url link to reset your password.</p>
+    <p><a href="{{ $url }}">{{ $url }}<a></p>
+    <p>Please do not reply to this email.</p>
     <p>Thank you</p>
 </body>
 </html>

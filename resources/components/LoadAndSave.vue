@@ -2,9 +2,9 @@
     <b-container fluid >
         <b-row class="my-3" align-v="center">
             <b-col class="my-1" md="1"><label>讀取:</label></b-col>
-            <b-col class="my-1" md="2"><b-button id="loadButton" variant="outline-primary" @click="fetch">Load Data</b-button></b-col>
+            <b-col class="my-1" md="2"><b-button id="loadButton" variant="outline-dark" @click="fetch">Load Data</b-button></b-col>
             <b-col class="my-1" md="1"><label>儲存:</label></b-col>
-            <b-col class="my-1" md="2"><b-button id="saveButton" variant="outline-success" @click="save">Save Data</b-button></b-col>
+            <b-col class="my-1" md="2"><b-button id="saveButton" variant="outline-dark" @click="save">Save Data</b-button></b-col>
         </b-row>
         <!-- below is code for modal dialogs-->
         <LoadModal />

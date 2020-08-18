@@ -3,7 +3,7 @@
         <div class="d-block text-center">
             <h3>您已登出系統</h3>
         </div>
-        <b-button class="mt-3" variant="outline-primary" block @click="$emit('logout')">確定</b-button>
+        <b-button class="mt-3" variant="outline-dark" block @click="$emit('logout')">確定</b-button>
     </b-modal>
 </template>
 

@@ -126,6 +126,7 @@ const actions = {
                     resolve(res)
                 })
                 .catch(err => { 
+                    localStorage.removeItem('access_token')
                     console.log(err)
                     reject(err)
                 })

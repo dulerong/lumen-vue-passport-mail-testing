@@ -4,7 +4,7 @@
             <h3>確定刪除資料?</h3>
         </div>
         <b-button class="mt-3" variant="outline-danger" block @click="$emit('deleteSavedData')">確定</b-button>
-        <b-button class="mt-3" variant="outline-primary" block @click="$bvModal.hide('deleteModal')">取消</b-button>
+        <b-button class="mt-3" variant="outline-dark" block @click="$bvModal.hide('deleteModal')">取消</b-button>
     </b-modal>
 </template>
 

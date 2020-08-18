@@ -8,8 +8,9 @@
             <b-form-group label='Password' label-for="password">
                 <b-form-input id='password' name="password" type='password' v-model="password" />
             </b-form-group>
-            <b-button type="submit" variant="primary">Login</b-button>
+            <b-button type="submit" variant="dark">Login</b-button>
             <p class="my-3"><router-link to="/resetpassword">Forgot your password? Reset it here.</router-link></p>
+            <p class="my-3"><router-link to="/register">First time? Register here.</router-link></p>
         </b-form>
         <Spinner /> <!-- Loading spinner -->
         <!-- Below are codes for message modals -->
@@ -62,7 +63,7 @@ export default {
     }
     .container {
         width: 50%;
-        margin-top: 40px;
+        margin-top: 10px;
     }
     @media (max-width: 700px) { 
     .container {
