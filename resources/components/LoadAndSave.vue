@@ -8,9 +8,9 @@
         </b-row>
         <!-- below is code for modal dialogs-->
         <LoadModal />
-        <SaveModal />
         <SaveFinishModal v-on:loadDataPage="loadDataPage" />
         <SaveFailModal v-on:saveFail="saveFail" />
+        <SaveFailModal2 />
         <!-- above is code for modal dialogs-->
     </b-container>
 
@@ -18,14 +18,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+
 import LoadModal from '../modals/LoadModal'
-import SaveModal from '../modals/SaveModal'
 import SaveFinishModal from '../modals/SaveFinishModal'
 import SaveFailModal from '../modals/SaveFailModal'
+import SaveFailModal2 from '../modals/SaveFailModal2'
 
 export default {
     name: "LoadAndSave",
-    components: { LoadModal, SaveModal, SaveFinishModal, SaveFailModal },
+    components: { LoadModal, SaveFinishModal, SaveFailModal, SaveFailModal2 },
     computed: mapGetters(['locationSelected', 'ageSelected', 'records']),
     methods: { 
         ...mapActions(['fetchData', 'saveData']),
@@ -35,12 +36,10 @@ export default {
         },
         async save(){
             if(!this.$store.getters.loggedIn){ this.$bvModal.show('saveFailModal') }
+            else if(!this.records.length){ this.$bvModal.show('saveFailModal2')}
             else{
-                if(!this.records.length){ this.$bvModal.show('saveModal')}
-                else{
-                    await this.saveData()
-                    this.$bvModal.show('saveFinishModal')
-                }
+                await this.saveData()
+                this.$bvModal.show('saveFinishModal')
             }
         },
         loadDataPage(){
@@ -48,8 +47,7 @@ export default {
             let vm = this
             setTimeout(function(){ vm.$router.push('data') }, 1000);
         },
-        saveFail(){ this.$router.push({ name: 'login' }) }
-        
+        saveFail(){ this.$router.push({ name: 'login' }) }   
     },
 }
 </script>

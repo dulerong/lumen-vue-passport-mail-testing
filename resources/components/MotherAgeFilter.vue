@@ -37,6 +37,6 @@ export default {
         ...mapGetters(['ageSelected']),
     },
     methods: {...mapActions(['changeAge'])},
-    watch:{ selectedSorted: function(val, oldVal){ this.changeAge(val) }}
+    watch:{ selectedSorted: function(val){ this.changeAge(val) }}
 }
 </script>

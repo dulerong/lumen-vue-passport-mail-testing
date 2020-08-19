@@ -25,7 +25,16 @@ import SpinnerGreyCover from '../components/SpinnerGreyCover'
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    components: { LocationFilter, MotherAgeFilter, BirthGenderFilter, BirthOrderFilter, Comment, LoadAndSave, DisplayResult, SpinnerGreyCover },
+    components: { 
+        LocationFilter, 
+        MotherAgeFilter, 
+        BirthGenderFilter, 
+        BirthOrderFilter, 
+        Comment, 
+        LoadAndSave, 
+        DisplayResult, 
+        SpinnerGreyCover 
+    },
     computed: mapGetters(['loading', 'records']),
 }
 </script>

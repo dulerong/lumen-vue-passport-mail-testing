@@ -12,6 +12,11 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'username'=>'required|string|email|max:255',
+            'password'=>'required|string|max:255'
+        ]);
+
         $http = new \GuzzleHttp\Client;
 
         try {

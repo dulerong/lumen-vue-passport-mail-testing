@@ -23,7 +23,6 @@
                 <b-form-invalid-feedback id="input-live-feedback">Unmatching passwords!</b-form-invalid-feedback>  
             </b-form-group>
 
-
             <b-button type="submit" variant="dark">Register</b-button>
         </b-form>
         <!-- Below are codes for message modals -->

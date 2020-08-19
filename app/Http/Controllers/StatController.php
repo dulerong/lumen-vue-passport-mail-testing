@@ -20,24 +20,25 @@ class StatController extends Controller
     //
 
     public function showAllStats(Request $request){
-        // return response()->json(Stat::orderBy('created_at','desc')->get());
+
         $record = Stat::where('user_id', auth()->user()->id)->orderBy('created_at','desc')->get();
+
         if($record){ return $record ;}
         else{ return response()->json('No record exist');}
 
-        // return Stat::where('user_id', auth()->user()->id)->get();
-    }
-
-    public function showOneStat($id){
-        return response()->json(Stat::find($id));
     }
 
     public function create(Request $request){
         //validation
         $this->validate($request, [
-            'birthCount' => 'required',
-            'birthMale' => 'required',
-            'birthFemale' => 'required'
+            'selected' => 'required|string',
+            'motherAge' => 'required|string',
+            'birthOrder' => 'required|string',
+            'birthGender' => 'required|string',
+            'birthCount' => 'required|string',
+            'birthMale' => 'required|string',
+            'birthFemale' => 'required|string',
+            'comment' => 'nullable|string'
         ]);
 
         //insert record
@@ -59,6 +60,7 @@ class StatController extends Controller
     }
 
     public function delete($id){
+        
         $record = Stat::findOrFail($id);
 
         if($record->user_id !== auth()->user()->id){ return response()->json('Unauthorized delete attempt', 401);}

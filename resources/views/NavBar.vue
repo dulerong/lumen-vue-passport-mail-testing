@@ -25,9 +25,9 @@ export default {
     computed: {
         loggedIn(){ return this.$store.getters.loggedIn },
         username(){
-            if(this.$store.getters.username){ 
-                return 'User : ' + this.$store.getters.username.charAt(0).toUpperCase() + this.$store.getters.username.slice(1)
-            }
+            const username = this.$store.getters.username
+
+            if(username){ return 'User : ' + username.charAt(0).toUpperCase() + username.slice(1) }
             else{ return 'User : Guest' }
         }
     },
