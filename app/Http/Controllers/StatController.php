@@ -66,7 +66,7 @@ class StatController extends Controller
         if($record->user_id !== auth()->user()->id){ return response()->json('Unauthorized delete attempt', 401);}
         else{
             $record->delete();
-            return response('Deleted Successfully!');
+            return response()->json('Deleted Successfully!');
         }
     }
 
