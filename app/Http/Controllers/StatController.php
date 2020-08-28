@@ -35,9 +35,9 @@ class StatController extends Controller
             'motherAge' => 'required|string',
             'birthOrder' => 'required|string',
             'birthGender' => 'required|string',
-            'birthCount' => 'required|string',
-            'birthMale' => 'required|string',
-            'birthFemale' => 'required|string',
+            'birthCount' => 'required|numeric',
+            'birthMale' => 'required|numeric',
+            'birthFemale' => 'required|numeric',
             'comment' => 'nullable|string'
         ]);
 
