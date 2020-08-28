@@ -72,7 +72,9 @@ enter localhost:8000 in address, press enter
 * Front-end: ```npm run test``` 
 * Back-end: ```php vendor/phpunit/phpunit/phpunit```
 
-test file: tests/unit/test.spec.js
+### test file location: 
+* JEST: tests/unit/~ all files with .spec.js ending
+* phpunit: tests/HttpTest.php
 
 ## Built With
 * Front-end: Vue, Bootstrap-Vue, Vue-Router, Vuex, axios
