@@ -64,9 +64,9 @@ class HttpTest extends TestCase
             'motherAge' => '20～24歲',
             'birthOrder' => '所有胎數',
             'birthGender' => '所有性別',
-            'birthCount' => '100',
-            'birthMale' => '60',
-            'birthFemale' => '40',
+            'birthCount' => 100,
+            'birthMale' => 60,
+            'birthFemale' => 40,
             'comment' => 'Test Record!'
         ];
 
@@ -94,9 +94,9 @@ class HttpTest extends TestCase
             'motherAge' => '20～24歲',
             'birthOrder' => '所有胎數',
             'birthGender' => '所有性別',
-            'birthCount' => '2',
-            'birthMale' => '1',
-            'birthFemale' => '1',
+            'birthCount' => 2,
+            'birthMale' => 1,
+            'birthFemale' => 1,
             'comment' => 'Test Record for Delete'
         ];
 
